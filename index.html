@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Instantly check your PC for component bottlenecks. Our free calculator analyzes your CPU and GPU to prevent performance loss and help you build a balanced system.">
+    <title>PC Bottleneck Calculator - Check Your CPU & GPU Balance</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22%233f51b5%22%20d%3D%22M2%2C0A2%2C2%2C0%2C0%2C0%2C0%2C2V14a2%2C2%2C0%2C0%2C0%2C2%2C2H14a2%2C2%2C0%2C0%2C0%2C2-2V2a2%2C2%2C0%2C0%2C0-2-2ZM4%2C2H6V4H4ZM8%2C2h2V4H8Zm4%2C0h2V4H12ZM4%2C6H6V8H4Zm4%2C0h2V8H8Zm4%2C0h2V8H12ZM4%2C10H6v2H4Zm4%2C0h2v2H8Zm4%2C0h2v2H12Z%22%2F%3E%3C%2Fsvg%3E">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 2V8H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 14H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 17H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 11H11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Bottleneck Calculator</span>
+            </div>
+             <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container" id="calculator-view">
+            <h1>PC Performance & Bottleneck Calculator</h1>
+            <p class="subtitle">Unlock your PC's true potential. Our advanced calculator analyzes the critical balance between your CPU and GPU, pinpointing performance bottlenecks to ensure your system is optimized for elite gaming and demanding productivity.</p>
+            <p class="subtitle">Select your components to analyze your PC's performance balance.</p>
+            <!-- PASTE THIS ENTIRE BLOCK RIGHT AFTER THE SUBTITLE PARAGRAPH IN YOUR INDEX.HTML -->
+<div class="update-banner">
+    <div class="banner-content">
+        <span class="banner-icon">🚀</span>
+        <div class="banner-text"> <!-- ADDED CLASS HERE -->
+            <h4>Database Updated!</h4>
+            <p>Now featuring the latest 2025 CPU & GPU models with up-to-date performance data.</p>
+        </div>
+    </div>
+    <span class="latest-tag">✨ Latest</span>
+</div>
+            <div class="calculator-card">
+                <div class="input-group">
+                    <label for="cpu-select">Processor (CPU)</label>
+                    <select id="cpu-select"><option value="">-- Select CPU --</option></select>
+                </div>
+                <div class="input-group">
+                    <label for="gpu-select">Graphics Card (GPU)</label>
+                    <select id="gpu-select"><option value="">-- Select GPU --</option></select>
+                </div>
+                <div class="input-group">
+                    <label for="resolution-select">Target Resolution</label>
+                     <select id="resolution-select">
+                        <option value="1080p">1080p (1920x1080)</option>
+                        <option value="1440p" selected>1440p (2560x1440)</option>
+                        <option value="4k">4K (3840x2160)</option>
+                        <option value="ultrawide">Ultrawide (3440x1440)</option>
+                    </select>
+                </div>
+                 <div class="advanced-options">
+                    <button id="toggle-advanced" class="toggle-btn">Advanced Options ▼</button>
+                    <div id="advanced-content" class="hidden">
+                        <div class="input-group">
+                            <label for="ram-select">System RAM</label>
+                            <select id="ram-select">
+                                <option value="8">8 GB</option>
+                                <option value="16" selected>16 GB</option>
+                                <option value="32">32 GB</option>
+                                <option value="64">64+ GB</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="purpose-select">Primary Use Case</label>
+                            <select id="purpose-select">
+                                <option value="gaming" selected>Gaming</option>
+                                <option value="streaming">Gaming & Streaming</option>
+                                <option value="video_editing">Video Editing</option>
+                                <option value="3d_rendering">3D Rendering & Design</option>
+                                <option value="general">General & Office Use</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button id="calculate-btn">Analyze My System</button>
+            </div>
+        </div>
+
+        <div class="container hidden" id="results-view">
+             <!-- Results will be dynamically inserted here -->
+        </div>
+         <div class="container">
+            <div class="interlink-box" style="text-align:center; border-left: 4px solid var(--primary);">
+                <h4 style="color: var(--primary); border:none;">Curious about gaming performance?</h4>
+                <p>Estimate your average Frames Per Second in popular titles with our new tool.</p>
+                <a href="fps-calculator.html" style="background-color: var(--primary); color: white;">Try the FPS Estimator →</a>
+            </div>
+        </div>
+                <!-- PASTE THIS ENTIRE BLOCK INTO YOUR INDEX.HTML, REPLACING THE PREVIOUS CONTENT BLOCK -->
+        <div class="container">
+            <div class="results-card">
+                <h2>Understanding PC Bottlenecks: A Complete Guide to a Balanced System</h2>
+                <p>Welcome to the ultimate resource for PC performance analysis. A "bottleneck" is the single most important concept to understand when building or upgrading a gaming PC. It occurs when one of your components is too slow to keep up with the others, effectively creating a "traffic jam" that limits your entire system's potential. Our <strong>PC Bottleneck Calculator</strong> is designed to instantly identify these issues for you.</p>
+                <p>By preventing bottlenecks, you ensure that every dollar you spend on hardware translates directly into the performance you expect. A balanced PC is a powerful, efficient, and cost-effective PC.</p>
+
+                <h3 style="margin-top: 2rem;">What is a CPU Bottleneck? (The "Bad" Bottleneck)</h3>
+                <p>A CPU bottleneck happens when your processor (CPU) cannot process data and instructions fast enough to keep your graphics card (GPU) fully occupied. This is the most common and problematic type of bottleneck for gamers, as it leads to inconsistent performance that can't be fixed by simply lowering graphics settings.</p>
+                <p><strong>Common Symptoms:</strong>
+                    <ul>
+                        <li>Stuttering or choppy gameplay, especially during intense action.</li>
+                        <li>Low FPS in CPU-intensive games (e.g., *Valorant*, *Counter-Strike 2*, or large-scale strategy games).</li>
+                        <li>Your GPU usage is unexpectedly low (e.g., 60-70%) while one or more CPU cores are at 100%.</li>
+                    </ul>
+                </p>
+
+                <h3 style="margin-top: 2rem;">What is a GPU Bottleneck? (The "Good" Bottleneck)</h3>
+                <p>A GPU bottleneck, also known as being "GPU limited," occurs when your graphics card is running at full capacity (99-100% usage). It is the component dictating your maximum frame rate because it's working as hard as possible to render the best visuals.</p>
+                <p><strong>This is generally the ideal scenario for gaming.</strong> It means you are getting every bit of performance you paid for out of your graphics card. This typically happens when playing graphically demanding AAA titles at high resolutions (1440p or 4K) with settings like textures and ray tracing on "Ultra."</p>
+
+                <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+                <h2>How to Fix a Bottleneck: Your Action Plan</h2>
+                <p>Once our calculator identifies a bottleneck, the next step is to address it. Here are the most effective, solution-oriented steps you can take for each scenario.</p>
+
+                <h3 style="margin-top: 2rem;">Tackling a CPU Bottleneck</h3>
+                <p>If your CPU is the weak link, your primary goal is to reduce its workload or increase its performance.</p>
+                <p><strong>Immediate Software & Settings Fixes:</strong>
+                    <ul>
+                        <li><strong>Close Background Applications:</strong> Shut down web browsers, streaming apps, and any unnecessary programs before you start a game.</li>
+                        <li><strong>Lower CPU-Intensive Game Settings:</strong> In your game's options, reduce settings like "Object Detail," "Physics Quality," "Crowd Density," or "View Distance."</li>
+                        <li><strong>Increase Resolution:</strong> This sounds counterintuitive, but increasing the resolution (e.g., from 1080p to 1440p) puts more stress on the GPU, which can help balance the load and make you more GPU-limited.</li>
+                    </ul>
+                </p>
+                <p><strong>Long-Term Hardware Solutions:</strong>
+                    <ul>
+                        <li><strong>Overclocking:</strong> If you have adequate cooling, overclocking your CPU can provide a 5-15% performance boost, which can be enough to alleviate a minor bottleneck.</li>
+                        <li><strong>Upgrade Your CPU:</strong> This is the most effective solution. Use our calculator's results to find a processor that is a better performance match for your existing graphics card.</li>
+                    </ul>
+                    <!-- PASTE THIS BLOCK AFTER THE "Long-Term Hardware Solutions" LISTleneck" heading.
+
+```html
+<!-- REPLACE THE PREVIOUS "Real-World Example" BLOCK WITH THIS NEW ONE -->
+<div class="info-box" style="margin-top: 1.5rem;">
+    <h5 style="font-size: 1.1rem;">Real-World Example: Overcoming a Mid-Range GPU Limit</h5>
+    <p>Consider a user with a very popular and capable CPU like the <strong>AMD Ryzen 5 5600X</strong>, paired with an older, entry-level graphics card such as the <strong>NVIDIA GeForce GTX 1660 Super</strong>.</p>
+    <p>This user wants to play modern AAA titles at 1440p resolution. While the Ryzen 5 5600X has plenty of processing power to handle the game's logic, the GTX 1660 Super would immediately hit 100% usage and struggle to produce a smooth frame rate. The user would be forced to lower the resolution and turn all graphics settings to "Low." This is a clear GPU bottleneck.</p>
+    <p><strong>The Solution:</strong> By upgrading the graphics card to a modern mid-range GPU, like an <strong>NVIDIA GeForce RTX 4060</strong> or an <strong>AMD Radeon RX 7700 XT</strong>, the system's gaming potential is unlocked. The new GPU can easily handle 1440p gaming at high settings, perfectly complementing the strong performance of the Ryzen 5 5600X. The result is a dramatically improved visual experience and higher, more stable frame rates.</p>
+</div>```
+
+<!--### Why This New Example is Also Highly Effective:
+
+*   **Targets a Huge Audience:** The Ryzen 5  IN YOUR INDEX.HTML -->
+<div class="info-box" style="margin-top: 1.5rem;">
+    <h5 style="font-size: 1.1rem;">Real-World Example: Upgrading Your CPU for a Modern GPU</h5>
+    <p>Consider a user who just upgraded to a brand new, powerful graphics card like the <strong>NVIDIA RTX 4070</strong>. Their existing processor is a well-regarded but older CPU, such as the <strong>AMD Ryzen 5 3600</strong>.</p>
+    <p>In graphically intense, single-player games at 1440p or 4K, this combination might perform reasonably well. However, when trying to achieve high frame rates in competitive eSports titles like <em>Valorant</em> or <em>Apex Legends</em> at 1080p, the user would notice that their performance hits a wall and their game stutters, no matter how much they lower the graphics settings.</p>
+    <p><strong>The Solution:</strong> This is a clear CPU bottleneck. The Ryzen 5 3600, while a great chip for its time, struggles to send information fast enough to fully utilize the powerful RTX 4070. By upgrading the CPU to a modern equivalent like an <strong>AMD Ryzen 5 7600X</strong> or an <strong>Intel Core i5-14600K</strong>, the system's balance is restored. The new CPU can easily keep up, allowing the RTX 4070 to reach its full potential and deliver the fluid, high-FPS experience the user was hoping for.</p>
+</div>
+                </p>
+
+                <h3 style="margin-top: 2rem;">Managing a GPU Bottleneck</h3>
+                <p>Remember, this is often a good thing. The goal here isn't to eliminate the bottleneck, but to adjust it to achieve your desired frame rate.</p>
+                <p><strong>Your Primary Levers for More FPS:</strong>
+                    <ul>
+                        <li><strong>Lower GPU-Intensive Game Settings:</strong> The biggest performance gains come from lowering "Texture Quality," "Shadow Quality," "Anti-Aliasing," and disabling "Ray Tracing."</li>
+                        <li><strong>Enable Performance Scaling:</strong> Use technologies like NVIDIA DLSS, AMD FSR, or Intel XeSS. Setting them to "Performance" or "Ultra Performance" mode can dramatically boost your FPS.</li>
+                        <li><strong>Lower Your Resolution:</strong> Dropping from 4K to 1440p, or 1440p to 1080p, is the single biggest FPS booster, as it significantly reduces the number of pixels your GPU needs to render.</li>
+                        <li><strong>Upgrade Your GPU:</strong> If you want to maintain high settings and resolution, the ultimate solution is to upgrade to a more powerful graphics card.</li>
+                    </ul>
+                </p>
+
+                <h3 style="margin-top: 2rem;">How Our Calculator Leads to a Balanced PC</h3>
+                <p>Our tool analyzes the complex relationship between components so you don't have to. By entering your parts, you get an instant, data-driven analysis that empowers you to:</p>
+                <ul>
+                    <li><strong>Build Smarter:</strong> Avoid pairing a high-end GPU with an entry-level CPU before you buy.</li>
+                    <li><strong>Upgrade with Confidence:</strong> Know exactly which component to upgrade next for the biggest performance gain.</li>
+                    <li><strong>Save Money:</strong> Don't overspend on a part that your other components can't fully support.</li>
+                </ul>
+                <p><strong>Ready to check your build?</strong> Scroll back up and use the calculator to ensure your PC is perfectly balanced for maximum performance.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <button class="faq-question">What is a PC bottleneck?</button>
+                    <div class="faq-answer"><p>A bottleneck is a situation where one component limits the overall performance of your system. Even if you have a top-tier GPU, a weaker CPU can prevent it from reaching its full potential, creating a "bottleneck" that caps performance.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Is a CPU or GPU bottleneck worse?</button>
+                    <div class="faq-answer"><p>For gaming, a slight GPU bottleneck is often ideal, as it means your graphics card is the component working the hardest to produce maximum visual quality. A significant CPU bottleneck is generally worse for gaming because it can cause stuttering and inconsistent frame rates that can't be fixed by lowering graphics settings.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How accurate is this calculator?</button>
+                    <div class="faq-answer"><p>This tool provides a highly accurate, data-driven estimate based on the relative power of components. It's an excellent guide for build planning. However, real-world performance can vary by game, application, and driver versions. We always suggest pairing this data with real-world benchmark reviews.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Do other components like RAM cause bottlenecks?</button>
+                    <div class="faq-answer"><p>Yes. While the CPU/GPU relationship is the most critical, other parts matter. Insufficient or slow RAM can cause stuttering in demanding tasks. Likewise, a slow hard drive (HDD) will drastically increase loading times compared to an SSD, creating a noticeable storage bottleneck.</p></div>
+                </div>
+            </div>
+        </div>
+    </main>
+        <!-- REPLACE YOUR ENTIRE CURRENT FOOTER WITH THIS BLOCK -->
+    <footer>
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div class="footer-social">
+            <!-- IMPORTANT: Replace the # with your actual page URLs -->
+            <a href="https://facebook.com/your-page-url" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 15.943 2 14.643 2C11.928 2 10 3.657 10 6.7V9.5H7V13.5H10V22H14V13.5Z"/></svg>
+            </a>
+            <a href="https://instagram.com/your-page-url" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg>
+            </a>
+        </div>
+
+        <p>© 2025 Bottleneck Calculator. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
